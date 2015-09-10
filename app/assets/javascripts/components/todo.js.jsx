@@ -1,11 +1,17 @@
 // https://facebook.github.io/react/docs/tutorial.html
-// tutorial1.js
+
+// passing data from render -> Commentbox -> commentlist, which maps it as an array of divs and renders it in a list div!
+var data = [
+  {author: "Pete Hunt", text: "This is one comment"},
+  {author: "Jordan Walke", text: "This is *another* comment"}
+];
+
 var CommentBox = React.createClass({
   render: function() {
     return (
       <div className="commentBox">
         <h1>Comments</h1>
-        <CommentList />
+        <CommentList data={this.props.data} />
         <CommentForm />
       </div>
     );
@@ -13,10 +19,16 @@ var CommentBox = React.createClass({
 });
 var CommentList = React.createClass({
   render: function() {
+    var commentNodes = this.props.data.map(function (comment) {
+      return (
+        <Comment author={comment.author}>
+          {comment.text}
+        </Comment>
+      );
+    });
     return (
       <div className="commentList">
-        <Comment author="Pete Hunt">This is one comment</Comment>
-        <Comment author="Jordan Walke">This is *another* comment</Comment>
+        {commentNodes}
       </div>
     );
   }
@@ -34,12 +46,14 @@ var CommentForm = React.createClass({
 
 var Comment = React.createClass({
   render: function() {
+    //prevents maliciously inserted HTML but allows us to use marked
+    var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
     return (
       <div className="comment">
         <h2 className="commentAuthor">
           {this.props.author}
         </h2>
-        {this.props.children}
+        <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
       </div>
     );
   }
@@ -47,6 +61,6 @@ var Comment = React.createClass({
 
 $(document).ready(function () {
   React.render(
-    <CommentBox />, document.getElementById('todo')
+    <CommentBox data={data} />, document.getElementById('todo')
   );
 });
