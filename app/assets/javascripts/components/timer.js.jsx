@@ -20,12 +20,12 @@ var TickTock = React.createClass({
     };
   },
   componentDidMount: function() {
-    this.setInterval(this.tick, 333);
-    this.setInterval(this.tick, 700); // Call a method on the mixin
+    this.setInterval(this.tick, 270);
+    this.setInterval(this.tick, 450); // Call a method on the mixin
 
   },
   tick: function() {
-    if (this.state.seconds === 7) {
+    if (this.state.seconds === 59) {
       this.setState({
         seconds: 0,
         minutes: this.state.minutes + 1
