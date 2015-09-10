@@ -1,0 +1,40 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: #C8FAFF;
+  padding: 40px;
+}
+.counter,
+.timer {
+  width: 300px;
+  margin: auto;
+  background: #111AAA;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+
+}
+.counter h1 {
+  margin: 0;
+  padding: 20px;
+  font-size: 36px;
+}
+
+.counter button {
+  background: #f1c40f;
+  border: 0;
+  box-shadow: 0px 5px 0px darken(#f1c40f, 20%);
+  padding: 20px;
+  width: 100%;
+  outline: none;
+  border-radius: 3px;
+  color: darken(#8e44ad, 10%);
+  font-weight: bold;
+}
+
+.timer h1 {
+  background: #ee43ff;
+}

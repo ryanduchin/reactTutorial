@@ -1,4 +1,8 @@
 Rails.application.configure do
+
+  config.react.variant = :development
+  config.react.jsx_transformer_class = React::JSX::JSXTransformer
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

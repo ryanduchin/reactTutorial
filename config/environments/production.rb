@@ -1,4 +1,7 @@
 Rails.application.configure do
+  config.react.variant = :production
+  config.react.jsx_transformer_class = React::JSX::JSXTransformer
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
